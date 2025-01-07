@@ -11,15 +11,21 @@ public class ProtocolProvider implements AutoCloseable {
 
     private final ProtocolEngine engine;
     private final TicketProtocol ticketProtocol;
+    private final BalanceProtocolImpl balanceProtocol;
 
     public ProtocolProvider(final MbsSdkConfig sdkConfig, final Consumer<Exception> unhandledExceptionHandler) {
         final ImmutableConfig config = new ImmutableConfig(sdkConfig);
         this.engine = new ProtocolEngine(config, unhandledExceptionHandler);
         this.ticketProtocol = new TicketProtocolImpl(this.engine);
+        this.balanceProtocol = new BalanceProtocolImpl(this.engine);
     }
 
     public TicketProtocol getTicketProtocol() {
         return ticketProtocol;
+    }
+
+    public BalanceProtocolImpl getBalanceProtocol() {
+        return balanceProtocol;
     }
 
     public void connect() {
