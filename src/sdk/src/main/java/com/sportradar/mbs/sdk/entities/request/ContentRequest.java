@@ -27,7 +27,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         @JsonSubTypes.Type(value = WithdrawalInformRequest.class, name = "withdrawal-inform"),
         @JsonSubTypes.Type(value = ExtSettlementAckRequest.class, name = "ext-settlement-ack"),
         @JsonSubTypes.Type(value = BalanceChangeInformRequest.class, name = "balance-change-inform"),
-        @JsonSubTypes.Type(value = MaxStakeRequest.class, name = "max-stake")
+        @JsonSubTypes.Type(value = MaxStakeRequest.class, name = "max-stake"),
+        @JsonSubTypes.Type(value = AccountActivityInformRequest.class, name = "account-activity-inform")
 })
 public class ContentRequest {
 
@@ -166,4 +167,12 @@ public class ContentRequest {
         return MaxStakeRequest.newBuilder();
     }
 
+    /**
+     * Creates a new instance of the AccountActivityInformRequest builder.
+     *
+     * @return The AccountActivityInformRequest builder.
+     */
+    public static AccountActivityInformRequest.Builder newAccountActivityInformBuilder() {
+        return AccountActivityInformRequest.newBuilder();
+    }
 }
