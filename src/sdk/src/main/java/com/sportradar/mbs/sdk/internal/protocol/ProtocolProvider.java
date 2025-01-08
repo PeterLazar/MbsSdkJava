@@ -12,12 +12,14 @@ public class ProtocolProvider implements AutoCloseable {
     private final ProtocolEngine engine;
     private final TicketProtocol ticketProtocol;
     private final BalanceProtocolImpl balanceProtocol;
+    private final AccountProtocolImpl accountProtocol;
 
     public ProtocolProvider(final MbsSdkConfig sdkConfig, final Consumer<Exception> unhandledExceptionHandler) {
         final ImmutableConfig config = new ImmutableConfig(sdkConfig);
         this.engine = new ProtocolEngine(config, unhandledExceptionHandler);
         this.ticketProtocol = new TicketProtocolImpl(this.engine);
         this.balanceProtocol = new BalanceProtocolImpl(this.engine);
+        this.accountProtocol = new AccountProtocolImpl(this.engine);
     }
 
     public TicketProtocol getTicketProtocol() {
@@ -26,6 +28,10 @@ public class ProtocolProvider implements AutoCloseable {
 
     public BalanceProtocolImpl getBalanceProtocol() {
         return balanceProtocol;
+    }
+
+    public AccountProtocolImpl getAccountProtocol() {
+        return accountProtocol;
     }
 
     public void connect() {

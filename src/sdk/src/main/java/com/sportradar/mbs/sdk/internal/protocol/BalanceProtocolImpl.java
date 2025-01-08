@@ -27,9 +27,4 @@ public class BalanceProtocolImpl implements BalanceProtocol {
     public CompletableFuture<WithdrawalInformResponse> sendWithdrawalInformAsync(final WithdrawalInformRequest request) {
         return engine.execute("balance-withdrawal-inform", request, WithdrawalInformResponse.class);
     }
-
-    @Override
-    public CompletableFuture<BalanceChangeInformResponse> sendBalanceChangeInformAsync(final BalanceChangeInformRequest request) {
-        return engine.execute("balance-change-inform", request, BalanceChangeInformResponse.class);
-    }
 }
