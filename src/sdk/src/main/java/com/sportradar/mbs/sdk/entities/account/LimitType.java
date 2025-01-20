@@ -3,26 +3,28 @@ package com.sportradar.mbs.sdk.entities.account;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
 
 public enum LimitType {
     DEPOSIT("deposit"),
     STAKE("stake"),
-    LOSS("loss");
+    LOSS("loss"),
+    SESSION("session");
 
     private static final Map<String, LimitType> VALUES = new HashMap<>();
 
     static {
-        for (final LimitType lt : values()) {
-            VALUES.put(lt.value, lt);
+        for (final LimitType lt : EnumSet.allOf(LimitType.class)) {
+            VALUES.put(lt.jsonVal, lt);
         }
     }
 
-    private final String value;
+    private final String jsonVal;
 
-    LimitType(final String value) {
-        this.value = value;
+    LimitType(final String jsonVal) {
+        this.jsonVal = jsonVal;
     }
 
     @JsonCreator
@@ -30,13 +32,12 @@ public enum LimitType {
         return value == null ? null : VALUES.get(value);
     }
 
-    @Override
-    public String toString() {
-        return this.value;
+    @JsonValue
+    public String getJsonValue() {
+        return this.jsonVal;
     }
 
-    @JsonValue
-    public String value() {
-        return this.value;
+    public String toString() {
+        return this.jsonVal;
     }
 }

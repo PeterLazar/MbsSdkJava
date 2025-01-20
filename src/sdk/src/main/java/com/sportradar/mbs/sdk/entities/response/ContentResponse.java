@@ -28,7 +28,10 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         @JsonSubTypes.Type(value = TicketResponse.class, name = "ticket-reply"),
         @JsonSubTypes.Type(value = WithdrawalInformResponse.class, name = "withdrawal-inform-reply"),
         @JsonSubTypes.Type(value = MaxStakeResponse.class, name = "max-stake-reply"),
-        @JsonSubTypes.Type(value = AccountActivityInformResponse.class, name = "account-activity-inform-reply")
+        @JsonSubTypes.Type(value = AccountStatusInformResponse.class, name = "account-status-inform-reply"),
+        @JsonSubTypes.Type(value = FinancialLimitInformResponse.class, name = "financial-limit-inform-reply"),
+        @JsonSubTypes.Type(value = SessionLimitInformResponse.class, name = "session-limit-inform-reply"),
+        @JsonSubTypes.Type(value = LimitReachedInformResponse.class, name = "limit-reached-inform-reply")
 })
 public class ContentResponse {
 
@@ -177,12 +180,38 @@ public class ContentResponse {
     }
 
     /**
-     * Creates a new instance of the AccountActivityInformResponse builder.
+     * Creates a new instance of the AccountStatusInformResponse builder.
      *
-     * @return The AccountActivityInformResponse builder.
+     * @return The AccountStatusInformResponse builder.
      */
-    public static AccountActivityInformResponse.Builder newAccountActivityInformResponseBuilder() {
-        return AccountActivityInformResponse.newBuilder();
+    public static AccountStatusInformResponse.Builder newAccountStatusInformResponseBuilder() {
+        return AccountStatusInformResponse.newBuilder();
     }
 
+    /**
+     * Creates a new instance of the FinancialLimitInformResponse builder.
+     *
+     * @return The FinancialLimitInformResponse builder.
+     */
+    public static FinancialLimitInformResponse.Builder newFinancialLimitInformResponseBuilder() {
+        return FinancialLimitInformResponse.newBuilder();
+    }
+
+    /**
+     * Creates a new instance of the SessionLimitInformResponse builder.
+     *
+     * @return The SessionLimitInformResponse builder.
+     */
+    public static SessionLimitInformResponse.Builder newSessionLimitInformResponseBuilder() {
+        return SessionLimitInformResponse.newBuilder();
+    }
+
+    /**
+     * Creates a new instance of the LimitReachedInformResponse builder.
+     *
+     * @return The LimitReachedInformResponse builder.
+     */
+    public static LimitReachedInformResponse.Builder newLimitReachedInformResponseBuilder() {
+        return LimitReachedInformResponse.newBuilder();
+    }
 }

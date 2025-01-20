@@ -28,7 +28,10 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         @JsonSubTypes.Type(value = ExtSettlementAckRequest.class, name = "ext-settlement-ack"),
         @JsonSubTypes.Type(value = BalanceChangeInformRequest.class, name = "balance-change-inform"),
         @JsonSubTypes.Type(value = MaxStakeRequest.class, name = "max-stake"),
-        @JsonSubTypes.Type(value = AccountActivityInformRequest.class, name = "account-activity-inform")
+        @JsonSubTypes.Type(value = AccountStatusInformRequest.class, name = "account-status-inform"),
+        @JsonSubTypes.Type(value = FinancialLimitInformRequest.class, name = "financial-limit-inform"),
+        @JsonSubTypes.Type(value = SessionLimitInformRequest.class, name = "session-limit-inform"),
+        @JsonSubTypes.Type(value = LimitReachedInformRequest.class, name = "limit-reached-inform")
 })
 public class ContentRequest {
 
@@ -168,11 +171,38 @@ public class ContentRequest {
     }
 
     /**
-     * Creates a new instance of the AccountActivityInformRequest builder.
+     * Creates a new instance of the AccountStatusInformRequest builder.
      *
-     * @return The AccountActivityInformRequest builder.
+     * @return The AccountStatusInformRequest builder.
      */
-    public static AccountActivityInformRequest.Builder newAccountActivityInformBuilder() {
-        return AccountActivityInformRequest.newBuilder();
+    public static AccountStatusInformRequest.Builder newAccountStatusInformBuilder() {
+        return AccountStatusInformRequest.newBuilder();
+    }
+
+    /**
+     * Creates a new instance of the FinancialLimitInformRequest builder.
+     *
+     * @return The FinancialLimitInformRequest builder.
+     */
+    public static FinancialLimitInformRequest.Builder newFinancialLimitInformBuilder() {
+        return FinancialLimitInformRequest.newBuilder();
+    }
+
+    /**
+     * Creates a new instance of the SessionLimitInformRequest builder.
+     *
+     * @return The SessionLimitInformRequest builder.
+     */
+    public static SessionLimitInformRequest.Builder newSessionLimitInformBuilder() {
+        return SessionLimitInformRequest.newBuilder();
+    }
+
+    /**
+     * Creates a new instance of the LimitReachedInformRequest builder.
+     *
+     * @return The LimitReachedInformRequest builder.
+     */
+    public static LimitReachedInformRequest.Builder newLimitReachedInformBuilder() {
+        return LimitReachedInformRequest.newBuilder();
     }
 }

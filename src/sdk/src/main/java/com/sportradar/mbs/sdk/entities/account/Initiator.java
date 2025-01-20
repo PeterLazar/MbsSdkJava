@@ -7,27 +7,28 @@ import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum LimitFrequency {
-    DAILY("daily"),
-    WEEKLY("weekly"),
-    MONTHLY("monthly");
+public enum Initiator {
+    PLAYER("player"),
+    OPERATOR("operator"),
+    REGULATOR("regulator"),
+    OTHER("other");
 
-    private static final Map<String, LimitFrequency> VALUES = new HashMap<>();
+    private static final Map<String, Initiator> VALUES = new HashMap<>();
 
     static {
-        for (final LimitFrequency lt : EnumSet.allOf(LimitFrequency.class)) {
+        for (final Initiator lt : EnumSet.allOf(Initiator.class)) {
             VALUES.put(lt.jsonVal, lt);
         }
     }
 
     private final String jsonVal;
 
-    LimitFrequency(final String jsonVal) {
+    Initiator(final String jsonVal) {
         this.jsonVal = jsonVal;
     }
 
     @JsonCreator
-    public static LimitFrequency fromValue(final String value) {
+    public static Initiator fromValue(final String value) {
         return value == null ? null : VALUES.get(value);
     }
 

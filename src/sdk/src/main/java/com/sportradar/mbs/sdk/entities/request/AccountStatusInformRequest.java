@@ -1,14 +1,23 @@
-package com.sportradar.mbs.sdk.entities.account;
+package com.sportradar.mbs.sdk.entities.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sportradar.mbs.sdk.entities.account.Initiator;
+import com.sportradar.mbs.sdk.entities.account.StatusValue;
 import com.sportradar.mbs.sdk.entities.common.EndCustomer;
 
-public class AccountActivityDetailsStatus extends AccountActivityDetails {
+/**
+ * Represents a request to inform about an account status update.
+ */
+public class AccountStatusInformRequest extends ContentRequest {
 
+    @JsonProperty("endCustomer")
+    private EndCustomer endCustomer;
+    @JsonProperty("timestampUtc")
+    private long timestampUtc;
     @JsonProperty("status")
     private StatusValue statusValue;
-    @JsonProperty("enforcement")
-    private StatusEnforcement statusEnforcement;
+    @JsonProperty("initiator")
+    private Initiator initiator;
     @JsonProperty("reason")
     private String reason;
     @JsonProperty("periodStartUtc")
@@ -17,12 +26,48 @@ public class AccountActivityDetailsStatus extends AccountActivityDetails {
     private Long periodEndUtc;
 
     /**
-     * Creates a new instance of the AccountActivityDetailsStatus.Builder class.
+     * Creates a new instance of the AccountStatusInformRequest.Builder class.
      *
-     * @return A new instance of the AccountActivityDetailsStatus.Builder class.
+     * @return A new instance of the AccountStatusInformRequest.Builder class.
      */
-    public static AccountActivityDetailsStatus.Builder newBuilder() {
-        return new AccountActivityDetailsStatus.Builder();
+    public static AccountStatusInformRequest.Builder newBuilder() {
+        return new AccountStatusInformRequest.Builder();
+    }
+
+    /**
+     * Gets the end customer.
+     *
+     * @return The end customer.
+     */
+    public EndCustomer getEndCustomer() {
+        return endCustomer;
+    }
+
+    /**
+     * Sets the end customer.
+     *
+     * @param value The end customer.
+     */
+    public void setEndCustomer(EndCustomer value) {
+        this.endCustomer = value;
+    }
+
+    /**
+     * Gets the status change timestamp in UTC.
+     *
+     * @return The status change timestamp in UTC.
+     */
+    public long getTimestampUtc() {
+        return timestampUtc;
+    }
+
+    /**
+     * Sets the status change timestamp in UTC.
+     *
+     * @param value The status change timestamp in UTC.
+     */
+    public void setTimestampUtc(long value) {
+        this.timestampUtc = value;
     }
 
     /**
@@ -44,21 +89,21 @@ public class AccountActivityDetailsStatus extends AccountActivityDetails {
     }
 
     /**
-     * Gets the status enforcement type.
+     * Gets the initiator type.
      *
-     * @return The status enforcement type.
+     * @return The initiator type.
      */
-    public StatusEnforcement getStatusEnforcement() {
-        return statusEnforcement;
+    public Initiator getInitiator() {
+        return initiator;
     }
 
     /**
-     * Sets the status enforcement type.
+     * Sets the initiator type.
      *
-     * @param value The status enforcement type.
+     * @param value The initiator type.
      */
-    public void setStatusEnforcement(StatusEnforcement value) {
-        this.statusEnforcement = value;
+    public void setInitiator(Initiator value) {
+        this.initiator = value;
     }
 
     /**
@@ -116,21 +161,21 @@ public class AccountActivityDetailsStatus extends AccountActivityDetails {
     }
 
     /**
-     * Builder class for creating instances of the AccountActivityDetailsStatus class.
+     * Represents a builder for the AccountStatusInformRequest class.
      */
     public static class Builder {
 
-        private final AccountActivityDetailsStatus instance = new AccountActivityDetailsStatus();
+        private final AccountStatusInformRequest instance = new AccountStatusInformRequest();
 
         private Builder() {
         }
 
         /**
-         * Builds and returns the AccountActivityDetailsStatus instance.
+         * Builds the AccountStatusInformRequest instance.
          *
-         * @return The built AccountActivityDetailsStatus instance.
+         * @return The built AccountStatusInformRequest instance.
          */
-        public AccountActivityDetailsStatus build() {
+        public AccountStatusInformRequest build() {
             return this.instance;
         }
 
@@ -140,18 +185,18 @@ public class AccountActivityDetailsStatus extends AccountActivityDetails {
          * @param value The end customer.
          * @return The builder instance.
          */
-        public Builder setEndCustomer(EndCustomer value) {
+        public AccountStatusInformRequest.Builder setEndCustomer(EndCustomer value) {
             this.instance.setEndCustomer(value);
             return this;
         }
 
         /**
-         * Sets the activity timestamp in UTC.
+         * Sets the status change timestamp in UTC.
          *
-         * @param value The activity timestamp in UTC.
+         * @param value The status change timestamp in UTC.
          * @return The builder instance.
          */
-        public Builder setTimestampUtc(long value) {
+        public AccountStatusInformRequest.Builder setTimestampUtc(long value) {
             this.instance.setTimestampUtc(value);
             return this;
         }
@@ -162,19 +207,19 @@ public class AccountActivityDetailsStatus extends AccountActivityDetails {
          * @param value The new status.
          * @return The builder instance.
          */
-        public Builder setStatusValue(StatusValue value) {
-            this.instance.statusValue = value;
+        public AccountStatusInformRequest.Builder setStatusValue(StatusValue value) {
+            this.instance.setStatusValue(value);
             return this;
         }
 
         /**
-         * Sets the status enforcement type.
+         * Sets the initiator type.
          *
-         * @param value The status enforcement type.
+         * @param value The initiator type.
          * @return The builder instance.
          */
-        public Builder setStatusEnforcement(StatusEnforcement value) {
-            this.instance.statusEnforcement = value;
+        public AccountStatusInformRequest.Builder setInitiator(Initiator value) {
+            this.instance.setInitiator(value);
             return this;
         }
 
@@ -184,8 +229,8 @@ public class AccountActivityDetailsStatus extends AccountActivityDetails {
          * @param value The status change reason.
          * @return The builder instance.
          */
-        public Builder setReason(String value) {
-            this.instance.reason = value;
+        public AccountStatusInformRequest.Builder setReason(String value) {
+            this.instance.setReason(value);
             return this;
         }
 
@@ -195,8 +240,8 @@ public class AccountActivityDetailsStatus extends AccountActivityDetails {
          * @param value The status period start in UTC.
          * @return The builder instance.
          */
-        public Builder setPeriodStartUtc(long value) {
-            this.instance.periodStartUtc = value;
+        public AccountStatusInformRequest.Builder setPeriodStartUtc(long value) {
+            this.instance.setPeriodStartUtc(value);
             return this;
         }
 
@@ -206,10 +251,9 @@ public class AccountActivityDetailsStatus extends AccountActivityDetails {
          * @param value The status period end in UTC.
          * @return The builder instance.
          */
-        public Builder setPeriodEndUtc(Long value) {
-            this.instance.periodEndUtc = value;
+        public AccountStatusInformRequest.Builder setPeriodEndUtc(Long value) {
+            this.instance.setPeriodEndUtc(value);
             return this;
         }
-
     }
 }

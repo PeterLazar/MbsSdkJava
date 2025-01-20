@@ -3,9 +3,9 @@ package com.sportradar.mbs.sdk.entities.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Represents a response object for account activity information.
+ * Represents a response object for an account status update.
  */
-public class AccountActivityInformResponse extends ContentResponse {
+public class AccountStatusInformResponse extends ContentResponse {
 
     @JsonProperty("code")
     private int code;
@@ -13,7 +13,7 @@ public class AccountActivityInformResponse extends ContentResponse {
     private String message;
 
     /**
-     * Creates a new instance of the AccountActivityInformResponse class.
+     * Creates a new instance of the AccountStatusInformResponse class.
      * Use the newBuilder() method to create an instance of the Builder class.
      */
     public static Builder newBuilder() {
@@ -57,21 +57,21 @@ public class AccountActivityInformResponse extends ContentResponse {
     }
 
     /**
-     * Builder class for creating instances of the AccountActivityInformResponse class.
+     * Builder class for creating instances of the AccountStatusInformResponse class.
      */
     public static class Builder {
 
-        private final AccountActivityInformResponse instance = new AccountActivityInformResponse();
+        private final AccountStatusInformResponse instance = new AccountStatusInformResponse();
 
         private Builder() {
         }
 
         /**
-         * Builds and returns the instance of the AccountActivityInformResponse class.
+         * Builds and returns the instance of the AccountStatusInformResponse class.
          *
          * @return The built instance.
          */
-        public AccountActivityInformResponse build() {
+        public AccountStatusInformResponse build() {
             return this.instance;
         }
 
