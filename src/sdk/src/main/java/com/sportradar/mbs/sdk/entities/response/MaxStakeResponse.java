@@ -14,6 +14,8 @@ public class MaxStakeResponse extends ContentResponse {
     private Bet[] bets;
     @JsonProperty("message")
     private String message;
+    @JsonProperty("signature")
+    private String signature;
 
     /**
      * Gets the code of the response.
@@ -67,6 +69,24 @@ public class MaxStakeResponse extends ContentResponse {
      */
     public void setMessage(String value) {
         this.message = value;
+    }
+
+    /**
+     * Gets the signature.
+     *
+     * @return The signature.
+     */
+    public String getSignature() {
+        return this.signature;
+    }
+
+    /**
+     * Sets the signature.
+     *
+     * @param value The signature to set.
+     */
+    public void setSignature(String value) {
+        this.signature = value;
     }
 
     /**
@@ -127,6 +147,17 @@ public class MaxStakeResponse extends ContentResponse {
          */
         public Builder setMessage(String value) {
             this.instance.setMessage(value);
+            return this;
+        }
+
+        /**
+         * Sets the signature.
+         *
+         * @param value The signature to set.
+         * @return The Builder instance.
+         */
+        public Builder setSignature(String value) {
+            this.instance.setSignature(value);
             return this;
         }
     }

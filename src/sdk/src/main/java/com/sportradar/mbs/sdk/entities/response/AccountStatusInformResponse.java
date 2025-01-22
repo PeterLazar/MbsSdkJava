@@ -11,6 +11,8 @@ public class AccountStatusInformResponse extends ContentResponse {
     private int code;
     @JsonProperty("message")
     private String message;
+    @JsonProperty("signature")
+    private String signature;
 
     /**
      * Creates a new instance of the AccountStatusInformResponse class.
@@ -57,6 +59,24 @@ public class AccountStatusInformResponse extends ContentResponse {
     }
 
     /**
+     * Gets the signature.
+     *
+     * @return The signature.
+     */
+    public String getSignature() {
+        return this.signature;
+    }
+
+    /**
+     * Sets the signature.
+     *
+     * @param value The signature to set.
+     */
+    public void setSignature(String value) {
+        this.signature = value;
+    }
+
+    /**
      * Builder class for creating instances of the AccountStatusInformResponse class.
      */
     public static class Builder {
@@ -94,6 +114,17 @@ public class AccountStatusInformResponse extends ContentResponse {
          */
         public Builder setMessage(String value) {
             this.instance.setMessage(value);
+            return this;
+        }
+
+        /**
+         * Sets the signature.
+         *
+         * @param value The signature to set.
+         * @return The Builder instance.
+         */
+        public Builder setSignature(String value) {
+            this.instance.setSignature(value);
             return this;
         }
     }
