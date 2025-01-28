@@ -12,8 +12,6 @@ public class AccountStatusInformRequest extends ContentRequest {
 
     @JsonProperty("endCustomer")
     private EndCustomer endCustomer;
-    @JsonProperty("timestampUtc")
-    private long timestampUtc;
     @JsonProperty("status")
     private StatusValue statusValue;
     @JsonProperty("initiator")
@@ -50,24 +48,6 @@ public class AccountStatusInformRequest extends ContentRequest {
      */
     public void setEndCustomer(EndCustomer value) {
         this.endCustomer = value;
-    }
-
-    /**
-     * Gets the status change timestamp in UTC.
-     *
-     * @return The status change timestamp in UTC.
-     */
-    public long getTimestampUtc() {
-        return timestampUtc;
-    }
-
-    /**
-     * Sets the status change timestamp in UTC.
-     *
-     * @param value The status change timestamp in UTC.
-     */
-    public void setTimestampUtc(long value) {
-        this.timestampUtc = value;
     }
 
     /**
@@ -187,17 +167,6 @@ public class AccountStatusInformRequest extends ContentRequest {
          */
         public AccountStatusInformRequest.Builder setEndCustomer(EndCustomer value) {
             this.instance.setEndCustomer(value);
-            return this;
-        }
-
-        /**
-         * Sets the status change timestamp in UTC.
-         *
-         * @param value The status change timestamp in UTC.
-         * @return The builder instance.
-         */
-        public AccountStatusInformRequest.Builder setTimestampUtc(long value) {
-            this.instance.setTimestampUtc(value);
             return this;
         }
 

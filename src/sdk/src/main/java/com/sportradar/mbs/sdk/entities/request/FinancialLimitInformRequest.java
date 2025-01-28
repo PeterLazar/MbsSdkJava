@@ -13,8 +13,6 @@ public class FinancialLimitInformRequest extends ContentRequest {
 
     @JsonProperty("endCustomer")
     private EndCustomer endCustomer;
-    @JsonProperty("timestampUtc")
-    private long timestampUtc;
     @JsonProperty("limitType")
     private FinancialLimitType limitType;
     @JsonProperty("frequency")
@@ -47,24 +45,6 @@ public class FinancialLimitInformRequest extends ContentRequest {
      */
     public void setEndCustomer(EndCustomer value) {
         this.endCustomer = value;
-    }
-
-    /**
-     * Gets the limit change timestamp in UTC.
-     *
-     * @return The limit change timestamp in UTC.
-     */
-    public long getTimestampUtc() {
-        return timestampUtc;
-    }
-
-    /**
-     * Sets the limit change timestamp in UTC.
-     *
-     * @param value The limit change timestamp in UTC.
-     */
-    public void setTimestampUtc(long value) {
-        this.timestampUtc = value;
     }
 
     /**
@@ -148,17 +128,6 @@ public class FinancialLimitInformRequest extends ContentRequest {
          */
         public FinancialLimitInformRequest.Builder setEndCustomer(EndCustomer value) {
             this.instance.setEndCustomer(value);
-            return this;
-        }
-
-        /**
-         * Sets the limit change timestamp in UTC.
-         *
-         * @param value The limit change timestamp in UTC.
-         * @return The builder instance.
-         */
-        public FinancialLimitInformRequest.Builder setTimestampUtc(long value) {
-            this.instance.setTimestampUtc(value);
             return this;
         }
 

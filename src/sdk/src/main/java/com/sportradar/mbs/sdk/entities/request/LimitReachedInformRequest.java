@@ -11,8 +11,6 @@ public class LimitReachedInformRequest extends ContentRequest {
 
     @JsonProperty("endCustomer")
     private EndCustomer endCustomer;
-    @JsonProperty("timestampUtc")
-    private long timestampUtc;
     @JsonProperty("limitType")
     private LimitType limitType;
 
@@ -41,24 +39,6 @@ public class LimitReachedInformRequest extends ContentRequest {
      */
     public void setEndCustomer(EndCustomer value) {
         this.endCustomer = value;
-    }
-
-    /**
-     * Gets the limit reached timestamp in UTC.
-     *
-     * @return The limit reached timestamp in UTC.
-     */
-    public long getTimestampUtc() {
-        return timestampUtc;
-    }
-
-    /**
-     * Sets the limit reached timestamp in UTC.
-     *
-     * @param value The limit reached timestamp in UTC.
-     */
-    public void setTimestampUtc(long value) {
-        this.timestampUtc = value;
     }
 
     /**
@@ -106,17 +86,6 @@ public class LimitReachedInformRequest extends ContentRequest {
          */
         public LimitReachedInformRequest.Builder setEndCustomer(EndCustomer value) {
             this.instance.setEndCustomer(value);
-            return this;
-        }
-
-        /**
-         * Sets the limit reached timestamp in UTC.
-         *
-         * @param value The limit reached timestamp in UTC.
-         * @return The builder instance.
-         */
-        public LimitReachedInformRequest.Builder setTimestampUtc(long value) {
-            this.instance.setTimestampUtc(value);
             return this;
         }
 
